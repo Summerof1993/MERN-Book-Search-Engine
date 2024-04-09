@@ -21,11 +21,25 @@ type Auth {
     user: User
 }
 
+input BookInput {
+    [author]: String 
+    description: String 
+    title: String 
+    bookId: id 
+    image: String 
+    link: String
+}
+
 type Query {
     me: User
 }
 
 type Mutation {
-
+    login(email: String, password: String): Auth
+    addUser(username: String, email: String, password: String): Auth
+    saveBook(input: BookInput): User
+    removeBook(bookId: id): User
 }
 `
+
+module.exports = typeDefs;
